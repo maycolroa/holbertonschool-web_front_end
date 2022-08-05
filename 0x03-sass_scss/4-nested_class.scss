@@ -1,0 +1,11 @@
+/* color assignment */
+
+$main_color_1: #3D3D3D;
+$main_color_2: #FF0000;
+
+body {
+    color: $main_color_1;
+    .red {
+    color: $main_color_2;
+    }
+}
