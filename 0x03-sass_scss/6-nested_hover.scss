@@ -1,0 +1,11 @@
+/* button:hover */
+
+$main_color_1: #FF0000;
+$main_color_2: #00FF00;
+
+button {
+    color: $main_color_1;
+    &:hover {
+    color: $main_color_2;
+    }
+}
