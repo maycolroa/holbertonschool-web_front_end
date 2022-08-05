@@ -5,12 +5,12 @@ $main_color_2: #6D6D6D;
 
 body {
     color: $main_color;
-    background-color: #6D6D6D;
+    background-color: $main_color_2;
 }
 
 p {
     color: $main_color;
 }
 h2 {
-    background-color: #6D6D6D;
+    background-color: $main_color_2;
 }
