@@ -174,9 +174,11 @@ a:active {
 
 /* Grid
       ============================= */
+
 .row {
     display: flex;
 }
+
 ul.row {
     margin: -1rem;
     padding: 0;
@@ -213,6 +215,10 @@ ul.row {
     letter-spacing: var(--nav-item-letter-spacing);
 }
 
+.nav .nav-item + .nav-item {
+    margin: var(--nav-item-margin);
+}
+
 .nav .nav-link {
     display: block;
     padding: 0.5rem 0;
@@ -240,10 +246,6 @@ ul.row {
     width: 100%;
 }
 
-.nav .nav-item + .nav-item {
-    margin: var(--nav-item-margin);
-}
-
 /* Header
       ============================= */
 
@@ -253,13 +255,12 @@ ul.row {
         z-index: 3;
         background: transparent;
 }
-
-.header-container{
+    
+.header-container {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
-
 
 /* Footer
       ============================= */
@@ -345,11 +346,17 @@ ul.row {
       ============================= */
 
 .section-hero {
+    position: relative;
+    margin-top: -8.5rem;
+}
+
+.hero-homepage {
     background-position: 75% 0;
     background-repeat: no-repeat;
     background-size: 90rem auto;
     background-color: #010101;
 }
+
 .section-hero .section-body {
     padding: 10rem 4rem;
 }
@@ -359,12 +366,6 @@ ul.row {
     text-transform: uppercase;
 }
 
-.hero-homepage {
-    background-position: 75% 0;
-    background-repeat: no-repeat;
-    background-size: 90rem auto;
-    background-color: #010101;
-    }
 .section-hero .section-title {
     margin-bottom: 5rem;
 }
@@ -374,21 +375,24 @@ ul.row {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    min-height: 50vh;
+    min-height: 50vh;  
 }
-/* Section Latest news ============================= */
+
+  /* Section Latest news ============================= */
 
 .section-latest-news .row {
     flex-direction: row-reverse;
 }
 
-/* Section SERVICES ============================= */
+  /* Section SERVICES ============================= */
+
 .section-services .row {
     flex-wrap: wrap;
 }
 
-/* Section ABOUT US */
-.section-about-us [class*='col-'] {
+  /* Section ABOUT US ============================= */
+
+.section-about-us [class^="col-"] {
     align-self: center;
 }
 
