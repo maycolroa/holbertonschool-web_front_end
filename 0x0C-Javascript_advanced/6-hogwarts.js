@@ -1,5 +1,5 @@
-function studentHogwarts() {
-    let privateScore = 0;
+function studentHogwarts () {
+    let privateScore = 0 ;
     let name = null;
     function changeScoreBy(points) {
         privateScore = privateScore + points;
