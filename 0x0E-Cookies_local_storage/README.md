@@ -1,0 +1,1 @@
+# Cookies y almacenamiento local
