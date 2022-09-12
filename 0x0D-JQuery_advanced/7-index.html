@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+</head>
+<body>
+    <script type="application/javascript">
+        function createSearchForm () {
+            let input_1 = $("<input type='text'>");
+            let input_2 = $("<input type='submit'>");
+            let list_1 = $("<ul></ul>");
+            input_2.click (function () {
+                let value_input_1 = $("input").first ().val ();
+                queryWikipedia(value_input_1);
+            });
+            $("body").append(input_1, input_2, list_1);
+        }
+
+        function addNewArticle (id, title, snippet) {
+            let list_item_1 = $("<li></li>");
+            let p_1 = $("<p></p>");
+            let p_2 = $("<p></p>");
+            let span_1 = $("<span></span>");
+            let tag_1 = $("<b></b>");
+            tag_1.append(title);
+            span_1.append(id + " - ", tag_1);
+            p_1.append(span_1);
+            p_2.append(snippet);
+            list_item_1.append(p_1, p_2);
+            $("ul").append(list_item_1);
+        }
+
+        function queryWikipedia (search) {
+            let wikipedia = "https://en.wikipedia.org/w/api.php?origin=*";
+            let parameters = {
+                action: "query",
+                list: "search",
+                srsearch: search,
+                format: "json"
+        }
+        Object.keys(parameters).forEach(function (key) {
+                wikipedia += "&" + key + "=" + parameters[key];
+            });
+
+            $.get(wikipedia, function (data) {
+                data.query.search.forEach(item => { addNewArticle(item.pageid, item.title, item.snippet); })
+            })
+        }
+        createSearchForm();
+    </script>
+</body>
+</html>
