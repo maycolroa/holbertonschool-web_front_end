@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+        if (typeof (sessionStorage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert('Sorry, your browser does not support local storage. Try again with a better one');
+        }
+        function addItemToCart(item) {
+            sessionStorage.setItem(item, true);
+        }
+        function createStore() {
+            let unordered_list = document.createElement("ul");
+            document.querySelector("body").append(unordered_list);
+
+            availableItems.forEach(element, index => {
+                let list_item = document.createElement("li");
+                list_item.innerHTML = element;
+                list_item.setAttribute('onclick', 'addItemToCart( " ' + item + ' " )');
+                unordered_list.append(list_item);
+                document.querySelector("body").append(unordered_list);
+            });
+        }
+        function displayCart() {
+            if (sessionStorage.length != 0) {
+                let paragraph = document.createElement("p");
+                paragraph.textContent(`You previously had ${sessionStorage.length} items in your cart`)
+                document.body.appendChild(paragraph);
+            }
+        }
+    </script>
+</body>
+</html>

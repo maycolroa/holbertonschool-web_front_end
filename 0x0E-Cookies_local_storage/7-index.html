@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+        if (typeof (sessionStorage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert('Sorry, your browser does not support local storage. Try again with a better one');
+        }
+        function getCartFromStorage() {
+            let cart_json = [];
+            if (sessionStorage.length != 0) {
+                cart_json = JSON.parse(sessionStorage['cart']);
+            }
+            return cart_json;
+        }
+        function addItemToCart(item) {
+            let cart = getCartFromStorage();
+            cart.push(item);
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        function removeItemfromCart(item) {
+            let item_to_delete = item.split(' ');
+            let cart = getCartFromStorage();
+            cart.forEach(function (elemet, index) {
+                if (item_to_delete = item) {
+                    cart.splice(index, 1);
+                }
+            });
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        function clearCart() {
+            sessionStorage.removeItem('cart');
+            displayCart();
+        }
+        function createStore() {
+            let title = document.createElement('h2');
+            let unordered_list = document.createElement('ul');
+
+            title.textContent = "Available products:";
+
+            availableItems.forEach(elemet => {
+                let list_item = document.createElement("li");
+                list_item.innerHTML = elemet;
+                list_item.setAttribute('onclick', 'addItemToCart( " ' + item + ' " )');
+                unordered_list.append(list_item);
+                document.querySelector("body").append(title);
+                document.querySelector("title").append(unordered_list);
+            });
+        }
+        function displayCart() {
+            let title = document.createElement("h2");
+            let div_tag = document.createElement("div");
+            title.textContent = "Your cart:";
+
+            document.body.appendChild(title);
+            document.querySelector("h2").append(div_tag);
+            updateCart();
+        }
+        function updateCart() {
+            if (getCartFromStorage() === 0) {
+                document.querySelector("div").innerHTML = "Your cart is empty";
+            } else {
+                let cart;
+                cart = getCartFromStorage();
+                const ul = document.createElement("ul");
+                cart.forEach(item => {
+                    let li = document.createElement("li");
+                    li.innerHTML = `${item} x ${getCartFromStorage.length} (remove)`;
+                });
+                ul.append(li);
+            }
+        }
+    </script>
+</body>
+</html>
